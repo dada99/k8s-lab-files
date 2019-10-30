@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfsserver-1
+  labels: 
+    type: nfs
+spec:
+  capacity:
+    storage: 50Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  #storageClassName: slow
+  mountOptions:
+    - hard
+  nfs:
+    path: /home/lslab/k8s-nfs-server
+    server: 10.163.213.25
